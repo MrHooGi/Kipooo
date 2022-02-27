@@ -33,68 +33,68 @@ public class Kipooo extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        consoleBroad("ÕıÔÚ¼ÓÔØÅäÖÃÎÄ¼ş...");
+        consoleBroad("æ­£åœ¨åŠ è½½é…ç½®æ–‡ä»¶...");
         if (!configFile.exists()) {
-            consoleBroad("ÅäÖÃÎÄ¼ş²»´æÔÚ...");
-            consoleBroad("ÕıÔÚ´ò°üÊäÈë...");
+            consoleBroad("é…ç½®æ–‡ä»¶ä¸å­˜åœ¨...");
+            consoleBroad("æ­£åœ¨æ‰“åŒ…è¾“å…¥...");
             try {
                 this.saveResource("config.yml" , true);
             } catch (Exception exception) {
-                consoleBroad("&cÅäÖÃÎÄ¼ş¶ÁÈ¡Ê§°Ü£¬¿ÉÄÜÊÇÓ²ÅÌ¿Õ¼ä²»×ã»òÃ»ÓĞÈ¨ÏŞ.");
+                consoleBroad("&cé…ç½®æ–‡ä»¶è¯»å–å¤±è´¥ï¼Œå¯èƒ½æ˜¯ç¡¬ç›˜ç©ºé—´ä¸è¶³æˆ–æ²¡æœ‰æƒé™.");
                 exception.printStackTrace();
             }
-            consoleBroad("ÔØÈë³É¹¦.");
+            consoleBroad("è½½å…¥æˆåŠŸ.");
         }
-        consoleBroad("ÕıÔÚ¼ÓÔØ±£´æÎÄ¼ş...");
+        consoleBroad("æ­£åœ¨åŠ è½½ä¿å­˜æ–‡ä»¶...");
         if (!saveFile.exists()) {
-            consoleBroad("±£´æÎÄ¼ş²»´æÔÚ...");
-            consoleBroad("ÕıÔÚ´ò°üÊäÈë...");
+            consoleBroad("ä¿å­˜æ–‡ä»¶ä¸å­˜åœ¨...");
+            consoleBroad("æ­£åœ¨æ‰“åŒ…è¾“å…¥...");
             try {
                 this.saveResource("save.yml" , true);
             } catch (Exception e) {
-                consoleBroad("&c±£´æÎÄ¼ş¶ÁÈ¡Ê§°Ü£¬¿ÉÄÜÊÇÓ²ÅÌ¿Õ¼ä²»×ã»òÃ»ÓĞÈ¨ÏŞ.");
+                consoleBroad("&cä¿å­˜æ–‡ä»¶è¯»å–å¤±è´¥ï¼Œå¯èƒ½æ˜¯ç¡¬ç›˜ç©ºé—´ä¸è¶³æˆ–æ²¡æœ‰æƒé™.");
                 e.printStackTrace();
             }
-            consoleBroad("ÔØÈë³É¹¦.");
+            consoleBroad("è½½å…¥æˆåŠŸ.");
         }
     }
 
     @Override
     public void onEnable() {
         Bukkit.getScheduler().runTaskTimerAsynchronously(this , this::setPlayerWithUID , 0 , 30 * 20);
-        // setRecipe(); // ÉèÖÃºÏ³É±í
+        // setRecipe(); // è®¾ç½®åˆæˆè¡¨
         config = YamlConfiguration.loadConfiguration(configFile);
-        consoleBroad("ÒÑ¼ÓÔØÅäÖÃÎÄ¼ş.");
+        consoleBroad("å·²åŠ è½½é…ç½®æ–‡ä»¶.");
         save = YamlConfiguration.loadConfiguration(saveFile);
-        consoleBroad("ÒÑ¼ÓÔØ±£´æÎÄ¼ş.");
-        consoleBroad("ÕıÔÚ¼ÓÔØ¼àÌıÆ÷...");
+        consoleBroad("å·²åŠ è½½ä¿å­˜æ–‡ä»¶.");
+        consoleBroad("æ­£åœ¨åŠ è½½ç›‘å¬å™¨...");
         loadModules(new SaveModules() , new HereModule() , new MentionModule() , new SeedModule() , new DndModule() ,
                 new TeleportModule() , new DeadModule() , new SkipNightModule() , new HomeModule());
         if (isLoad()) {
             loadModules(new ScoreBoardModule());
         }
         this.registerListener();
-        consoleBroad("¼ÓÔØÍê±Ï.");
+        consoleBroad("åŠ è½½å®Œæ¯•.");
     }
 
     @Override
     public void onDisable() {
-        consoleBroad("ÕıÔÚÇå¿ÕÅä·½...");
+        consoleBroad("æ­£åœ¨æ¸…ç©ºé…æ–¹...");
         Bukkit.clearRecipes();
-        consoleBroad("²å¼şÒÑĞ¶ÔØ.");
+        consoleBroad("æ’ä»¶å·²å¸è½½.");
     }
 
     /**
-     * ¼ì²éÒÀÀµÊÇ·ñ¼ÓÔØ
-     * @return ÈíÒÀÀµÊÇ·ñÒÑ¼ÓÔØ
+     * æ£€æŸ¥ä¾èµ–æ˜¯å¦åŠ è½½
+     * @return è½¯ä¾èµ–æ˜¯å¦å·²åŠ è½½
      */
     public boolean isLoad() {
         return Bukkit.getPluginManager().getPlugin("ProtocolLib") != null;
     }
 
     /**
-     * Ìí¼ÓÅä·½
-     * @param recipes Åä·½
+     * æ·»åŠ é…æ–¹
+     * @param recipes é…æ–¹
      */
     public void addRecipe(Recipe ... recipes) {
         for (Recipe recipe : recipes) {
@@ -103,27 +103,86 @@ public class Kipooo extends JavaPlugin {
     }
 
     /**
-     * ÉèÖÃÅä·½
+     * è®¾ç½®é…æ–¹
      */
     public void setRecipe() {
-        // TODO ºú¼ªĞèÒªÌí¼ÓµÄºÏ³É±í
+        // TODO èƒ¡å‰éœ€è¦æ·»åŠ çš„åˆæˆè¡¨
         // ShapedRecipe goldenReciped = new ShapedRecipe(PlayerContainer.KEY, new ItemStack(Material.GOLDEN_APPLE));
         // addRecipe(goldenReciped , goldenReciped , goldenReciped);
     }
+      public void createRecipe() {
+        ShapedRecipe golden_apple = new ShapedRecipe(new NamespacedKey(Kipooo.INSTANCE , "golden_apple"), new ItemStack(Material.ENCHANTED_GOLDEN_APPLE));
+        golden_apple = golden_apple.shape("ccc", "cxc", "ccc");
+        golden_apple = golden_apple.setIngredient('c', Material.GOLD_BLOCK).setIngredient('x', Material.APPLE);
+        Bukkit.addRecipe(golden_apple);
+    }
+    public void ElytraRecipe()
+    {
+        ShapedRecipe ElytraRecipe = new ShapedRecipe(new NamespacedKey(Kipooo.INSTANCE , "ElytraRecipe"), new ItemStack(Material.ELYTRA));
+        ElytraRecipe = ElytraRecipe.shape("cac", "cxc", "cxc");
+        ElytraRecipe = ElytraRecipe.setIngredient('c', Material.PHANTOM_MEMBRANE).setIngredient('a', Material.AIR).setIngredient("x",Material.AIR);
+        Bukkit.addRecipe(ElytraRecipe);
+    }
+    public void FunRecipe()
+    {
+        ShapedRecipe FunRecipe = new ShapedRecipe(new NamespacedKey(Kipooo.INSTANCE , "golden_apple"), new ItemStack(Material.ENCHANTED_GOLDEN_APPLE));
+        FunRecipe = FunRecipe.shape("ccc", "aba", "dcd");
+        FunRecipe = FunRecipe.setIngredient('c', Material.AIR).setIngredient('b',Material.LEATHER).setIngredient('a',Material.STICK).setIngredient('d',Material.STRING)
+        Bukkit.addRecipe(FunRecipe);
+    }
+    public void BundleRecipe()
+    {
+        ShapedRecipe BundleRecipe = new ShapedRecipe(new NamespacedKey(Fun.INSTANCE , "BundleRecipe"), new ItemStack(Material.BUNDLE));
+        BundleRecipe = BundleRecipe.shape("aca", "cbc", "ccc");
+        BundleRecipe = BundleRecipe.setIngredient('c', Material.LEATHER).setIngredient('b',Material.AIR).setIngredient('a',Material.STRING);
+        Bukkit.addRecipe(BundleRecipe);
+    }
+    public void SculkSensorRecipe()
+    {
+        ShapedRecipe SculkSensorRecipe = new ShapedRecipe(new NamespacedKey(Fun.INSTANCE , "SculkSensorRecipe"), new ItemStack(Material.BUNDLE));
+        SculkSensorRecipe = SculkSensorRecipe.shape("aca", "cbc", "bbb");
+        SculkSensorRecipe = SculkSensorRecipe.setIngredient('c', Material.REDSTONE).setIngredient('b',Material.DIRT).setIngredient('a',Material.AIR);
+        Bukkit.addRecipe(SculkSensorRecipe);
+    }
+    public void SpongeRecipe()
+    {
+        ShapedRecipe SculkSensorRecipe = new ShapedRecipe(new NamespacedKey(Fun.INSTANCE , "SpongeRecipe"), new ItemStack(Material.SPONGE));
+        SpongeRecipe =  SpongeRecipe.shape("aca", "cbc", "aca");
+        SpongeRecipe = SpongeRecipe.setIngredient('c', Material.PRISMARINE_CRYSTALS).setIngredient('b',Material.DIAMOND).setIngredient('a',Material.PRISMARINE_SHARD);
+        Bukkit.addRecipe(SpongeRecipe);
+    }
+
+
+   FurnaceRecipe fr = new FurnaceRecipe(
+    new NamespacedKey(<Kipooo>.instance, "a_furnace_recipe"),
+    new ItemStack(Material.LEATHER),
+    Material.SADDLE,
+    0.8,
+    200
+    );
+   DiamondRecipe fr = new DiamondRecipe(
+    new NamespacedKey(<Kipooo>.instance, "a_diamond_recipe"),
+    new ItemStack(Material.Diamond),
+    new RecipeChoice.MaterialChoice(Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS,Material.DIAMOND_BOOTS)
+    0.4,
+    300
+    );
+
+
 
     /**
-     * ÎªÍæ¼ÒÔö¼ÓUID
-     * @param player Íæ¼Ò
+     * ä¸ºç©å®¶å¢åŠ UID
+     * @param player ç©å®¶
      */
     public void addPlayer(Player player) {
         playerWithUID.put(player , playerWithUID.size() + 1);
     }
 
     /**
-     * ÅÅĞòÍæ¼ÒUID
+     * æ’åºç©å®¶UID
      */
     public void setPlayerWithUID() {
-        playerWithUID.clear(); // Çå¿ÕÊı¾İ
+        playerWithUID.clear(); // æ¸…ç©ºæ•°æ®
         List<OfflinePlayer> playerWithUIDCollection = Arrays.asList(Bukkit.getOfflinePlayers());
         playerWithUIDCollection.sort(new Comparator<OfflinePlayer>() {
             @Override
@@ -139,40 +198,40 @@ public class Kipooo extends JavaPlugin {
     }
 
     /**
-     * ÖØÖÃÎªÄ¬ÈÏÅäÖÃÎÄ¼ş
+     * é‡ç½®ä¸ºé»˜è®¤é…ç½®æ–‡ä»¶
      */
     public void updateDefaultConfig() {
         saveResource("config.yml" , true);
-        consoleBroad("¸²¸Ç³É¹¦.");
+        consoleBroad("è¦†ç›–æˆåŠŸ.");
     }
 
     /**
-     * ÖØÔØÅäÖÃÎÄ¼ş
+     * é‡è½½é…ç½®æ–‡ä»¶
      */
     public void reloadConfig() {
         if (!configFile.exists()) {
-            consoleBroad("ÅäÖÃÎÄ¼ş²»´æÔÚ£¬ÕıÔÚ¼ÓÔØ...");
+            consoleBroad("é…ç½®æ–‡ä»¶ä¸å­˜åœ¨ï¼Œæ­£åœ¨åŠ è½½...");
             saveResource("config.yml" , true);
         }
         config = YamlConfiguration.loadConfiguration(configFile);
-        consoleBroad("ÅäÖÃÎÄ¼şÒÑÖØÔØ");
+        consoleBroad("é…ç½®æ–‡ä»¶å·²é‡è½½");
     }
 
     /**
-     * ¼ÓÔØÄ£¿é
-     * @param modules ´«ÈëµÄÄ£¿é
+     * åŠ è½½æ¨¡å—
+     * @param modules ä¼ å…¥çš„æ¨¡å—
      */
     public void loadModules(EssentialsModule ... modules) {
         for (EssentialsModule module : modules) {
             if (module.isEnabled()) {
                 EssentialsModule.modules.add(module);
-                consoleBroad(module.modulesName() + "Ä£¿éÒÑ¼ÓÔØ.");
+                consoleBroad(module.modulesName() + "æ¨¡å—å·²åŠ è½½.");
             }
         }
     }
 
     /**
-     * ×¢²á¼àÌıÆ÷
+     * æ³¨å†Œç›‘å¬å™¨
      */
     public void registerListener() {
         Bukkit.getPluginManager().registerEvents(new PlayerActionEvent() , this);
@@ -182,44 +241,44 @@ public class Kipooo extends JavaPlugin {
     }
 
     /**
-     * ·µ»Ø´øÓĞÑÕÉ«µÄ×Ö
-     * @param text Ô­Ê¼ÎÄ±¾
-     * @return ´¦ÀíÖ®ºóµÄÎÄ±¾
+     * è¿”å›å¸¦æœ‰é¢œè‰²çš„å­—
+     * @param text åŸå§‹æ–‡æœ¬
+     * @return å¤„ç†ä¹‹åçš„æ–‡æœ¬
      */
     public static String toColor(String text) {
         return ChatColor.translateAlternateColorCodes('&' , text);
     }
 
     /**
-     * ÒÔºóÌ¨Éí·İ·¢ËÍĞÅÏ¢
-     * @param text ÎÄ±¾
+     * ä»¥åå°èº«ä»½å‘é€ä¿¡æ¯
+     * @param text æ–‡æœ¬
      */
     public static void consoleBroad(String text) {
         Bukkit.getConsoleSender().sendMessage(Kipooo.toColor("&dKipooo &f" + text));
     }
 
     /**
-     * Ïò·şÎñÆ÷ÄÚ¹ã²¥ĞÅÏ¢
-     * @param text ÎÄ±¾
+     * å‘æœåŠ¡å™¨å†…å¹¿æ’­ä¿¡æ¯
+     * @param text æ–‡æœ¬
      */
     public static void broadCast(String text) {
         Bukkit.broadcastMessage(Kipooo.toColor(text));
     }
 
     /**
-     * ×ª»»ÎªÅäÖÃÎÄ¼şÖĞµÄËõĞ´
-     * @param text ´«ÈëÎÄ±¾
-     * @return ×ª³öÎÄ±¾
+     * è½¬æ¢ä¸ºé…ç½®æ–‡ä»¶ä¸­çš„ç¼©å†™
+     * @param text ä¼ å…¥æ–‡æœ¬
+     * @return è½¬å‡ºæ–‡æœ¬
      */
     public static String toWorld(String text) {
         return INSTANCE.config.getConfigurationSection("options.world-alias").getKeys(false).contains(text) ? Kipooo.toColor(INSTANCE.config.getString("options.world-alias." + text)) : text;
     }
 
     /**
-     * Ìæ»»ÅäÖÃÎÄ¼ş²ÎÊı
-     * @param text Ô­Ê¼ÎÄ±¾
-     * @param player Ìæ»»Íæ¼Ò
-     * @return ´¦ÀíÎÄ±¾
+     * æ›¿æ¢é…ç½®æ–‡ä»¶å‚æ•°
+     * @param text åŸå§‹æ–‡æœ¬
+     * @param player æ›¿æ¢ç©å®¶
+     * @return å¤„ç†æ–‡æœ¬
      */
     public static String replacePlayer(String text , Player player) {
         if (player.getPersistentDataContainer().get(PlayerContainer.KEY , PlayerContainer.INSTANCE) != null) {
@@ -261,9 +320,9 @@ public class Kipooo extends JavaPlugin {
     }
 
     /**
-     * »ñÈ¡Íæ¼ÒµÄUID
-     * @param player Íæ¼Ò
-     * @return Íæ¼ÒµÄUID
+     * è·å–ç©å®¶çš„UID
+     * @param player ç©å®¶
+     * @return ç©å®¶çš„UID
      */
     public static int getUid(Player player) {
         return playerWithUID.get(player);
